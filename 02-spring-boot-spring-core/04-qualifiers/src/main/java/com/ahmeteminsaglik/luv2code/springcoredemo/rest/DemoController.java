@@ -12,7 +12,9 @@ public class DemoController {
 
     // @Qualifier with Constructor injection
     @Autowired
-    public DemoController(@Qualifier("cricketCoach") Coach theCoach) {
+//    public DemoController(@Qualifier("trackCoach") Coach theCoach) {
+    public DemoController(@Qualifier("baseballCoach") Coach theCoach) {
+//    public DemoController(@Qualifier("cricketCoach") Coach theCoach) {
 //    public DemoController(@Qualifier("tennisCoach")Coach theCoach) {
         this.myCoach = theCoach;
     }
@@ -20,6 +22,7 @@ public class DemoController {
 /*
     // @Qualifier with Setter injection
     @Autowired
+//    public void setMyCoach(@Qualifier("baseballCoach") Coach theCoach) {
 //    public void setMyCoach(@Qualifier("cricketCoach") Coach theCoach) {
     public void setMyCoach(@Qualifier("tennisCoach") Coach theCoach) {
 //    public void doSomeStuff(Coach theCoach) {
