@@ -20,12 +20,24 @@ public class CruddemoApplication {
     public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
         return runner -> {
             readAllStudentsByLastName(studentDAO);
+//            updateStudent(studentDAO);
         };
+    }
+
+    private void updateStudent(StudentDAO studentDAO) {
+        int studentId = 1;
+        System.out.println("Getting student with id : " + studentId);
+        Student student = studentDAO.findById(studentId);
+        System.out.println("Retrieved Student : "+student);
+        System.out.println("Updating Student...");
+        student.setFirstName("Scooby");
+        studentDAO.update(student);
+        System.out.println("Updated Student : "+student);
     }
 
     private void readAllStudentsByLastName(StudentDAO studentDAO) {
         List<Student> list = studentDAO.findByLastName("aes");
-        System.out.println("list size : "+list.size());
+        System.out.println("list size : " + list.size());
         list.forEach(System.out::println);
 
     }
