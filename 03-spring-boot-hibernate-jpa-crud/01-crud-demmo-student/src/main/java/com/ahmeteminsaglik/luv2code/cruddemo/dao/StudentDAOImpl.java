@@ -49,4 +49,13 @@ public class StudentDAOImpl implements StudentDAO {
         entityManager.merge(theStudent);
     }
 
+    @Override
+    @Transactional
+    public void updateAllLastname() {
+        int numRowsUpdated = entityManager.createQuery(
+                "UPDATE Student SET lastName='Tester'"
+        ).executeUpdate();
+        System.out.println("Updated Student data total Rows : " + numRowsUpdated);
+    }
+
 }

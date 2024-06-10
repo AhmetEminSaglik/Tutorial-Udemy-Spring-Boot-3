@@ -19,11 +19,13 @@ public class CruddemoApplication {
     @Bean
     public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
         return runner -> {
-            readAllStudentsByLastName(studentDAO);
-//            updateStudent(studentDAO);
+            updateMultipleData(studentDAO);
         };
     }
 
+    private  void updateMultipleData(StudentDAO studentDAO){
+        studentDAO.updateAllLastname();
+    }
     private void updateStudent(StudentDAO studentDAO) {
         int studentId = 1;
         System.out.println("Getting student with id : " + studentId);
