@@ -18,4 +18,8 @@ public interface StudentDAO {
     void update(Student theStudent);
 
     void updateAllLastname();
+
+    void deleteAllStudents();
+
+    void delete(int id);
 }
