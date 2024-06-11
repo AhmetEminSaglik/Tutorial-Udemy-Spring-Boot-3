@@ -51,13 +51,11 @@ public class StudentRestController {
     }
 
     @ExceptionHandler
-    public ResponseEntity<StudentErrorResponse> handleException(MethodArgumentTypeMismatchException exc) {
+    public ResponseEntity<StudentErrorResponse> handleException(Exception exc) {
         StudentErrorResponse error = new StudentErrorResponse();
-        error.setStatus(HttpStatus.NOT_FOUND.value());
-//        String systemMsg="System Message : "+exc.getMessage();
-//        systemMsg+="Clear Message : Invalid Integer value has been requested";
-        error.setMessage("Clear Message : Invalid Integer value has been requested for " + exc.getName() + " - " + exc.getValue());
+        error.setStatus(HttpStatus.BAD_REQUEST.value());
+        error.setMessage(exc.getMessage());
         error.setTimeStamp(System.currentTimeMillis());
-        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 }
