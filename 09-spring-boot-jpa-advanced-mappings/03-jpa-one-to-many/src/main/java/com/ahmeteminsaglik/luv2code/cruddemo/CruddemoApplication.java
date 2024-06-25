@@ -27,8 +27,23 @@ public class CruddemoApplication {
 //            deleteInstructorById(appDAO);
 //            findInstructorDetailById(appDAO);
 //            deleteInstructorDetailById(appDAO);
-            createInstructorWithCourses(appDAO);
+//            createInstructorWithCourses(appDAO);
+            findCoursesForInstructor(appDAO);
         };
+    }
+
+    private void findCoursesForInstructor(AppDAO appDAO) {
+        int id = 1;
+
+        Instructor tmpInstructor = appDAO.findInstructorById(id);
+
+        System.out.println("tmpInstructor : " + tmpInstructor);
+        System.out.println("Finding courses for Instructor id : " + id);
+        List<Course> courses = appDAO.findCoursesByInstructorId(id);
+        tmpInstructor.setCourseList(courses);
+        System.out.println("the associated courses: " + tmpInstructor.getCourseList());
+        System.out.println("Done!");
+
     }
 
     private void createInstructorWithCourses(AppDAO appDAO) {
@@ -46,11 +61,32 @@ public class CruddemoApplication {
         tempInstructor.add(tmpCourse2);
 
         System.out.println("Saving instructor : " + tempInstructor);
-        System.out.println("The Courses : "+tempInstructor.getCourseList());
+        System.out.println("The Courses : " + tempInstructor.getCourseList());
 
         appDAO.save(tempInstructor);
         System.out.println("Done!");
 
+        /*
+        Instructor tempInstructor = new Instructor("Ahmet Emin", "Saglik", "ahmeteminsaglik@luv2code.com");
+
+        InstructorDetail tempInstructorDetail = new InstructorDetail("http://www.youtube.com/@ahmeteminsaglik"
+                , "Coding Java");
+        tempInstructor.setInstructorDetail(tempInstructorDetail);
+
+
+        Course tmpCourse1 = new Course("Core Java - Java SE");
+        Course tmpCourse2 = new Course("Spring Boot");
+        Course tmpCourse3 = new Course("Create Algorithms");
+
+        tempInstructor.add(tmpCourse1);
+        tempInstructor.add(tmpCourse2);
+        tempInstructor.add(tmpCourse3);
+
+        System.out.println("Saving instructor : " + tempInstructor);
+        System.out.println("The Courses : " + tempInstructor.getCourseList());
+
+        appDAO.save(tempInstructor);
+        System.out.println("Done!");*/
     }
 
     private void deleteInstructorDetailById(AppDAO appDAO) {
