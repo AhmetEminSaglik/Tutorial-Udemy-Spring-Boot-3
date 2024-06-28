@@ -7,6 +7,7 @@ import com.ahmeteminsaglik.luv2code.cruddemo.entity.InstructorDetail;
 import java.util.List;
 
 public interface AppDAO {
+
     void save(Instructor theInstructor);
 
     Instructor findInstructorById(int id);
@@ -18,4 +19,12 @@ public interface AppDAO {
     void deleteInstructorDetailById(int id);
 
     List<Course> findCoursesByInstructorId(int id);
+
+    Instructor findInstructorByIdJoinFetch(int id);
+
+    void update(Instructor instructor);
+
+    void update(Course course);
+
+    Course findCourseById(int id);
 }
