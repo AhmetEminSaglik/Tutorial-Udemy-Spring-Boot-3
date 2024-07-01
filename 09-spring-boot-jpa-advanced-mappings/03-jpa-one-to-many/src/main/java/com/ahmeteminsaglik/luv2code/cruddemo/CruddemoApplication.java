@@ -9,7 +9,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
@@ -31,8 +30,17 @@ public class CruddemoApplication {
 //            findCoursesForInstructor(appDAO);
 //            findInstructorWithCoursesJoinFetch(appDAO);
 //            updateInstructor(appDAO);
-            updateCourse(appDAO);
+//            updateCourse(appDAO);
+            deleteCourseById(appDAO);
         };
+    }
+
+    private void deleteCourseById(AppDAO appDAO) {
+        int id = 10;
+        System.out.println("Course :" + appDAO.findCourseById(id));
+        System.out.println("Removing the course...");
+        appDAO.deleteCourseById(id);
+        System.out.println("Course is removed...");
     }
 
     private void updateCourse(AppDAO appDAO) {

@@ -108,6 +108,12 @@ public class Instructor {
 
     }
 
+    /*public void remove(Course tmpCourse) {
+        if (tmpCourse.getInstructor() == this) {
+            tmpCourse.setInstructor(null);
+        }
+    }*/
+
     @Override
     public String toString() {
         return "Instructor{" +
@@ -116,6 +122,7 @@ public class Instructor {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", instructorDetail=" + instructorDetail +
+                ", Course size=" + courseList.size() +
                 '}';
     }
 

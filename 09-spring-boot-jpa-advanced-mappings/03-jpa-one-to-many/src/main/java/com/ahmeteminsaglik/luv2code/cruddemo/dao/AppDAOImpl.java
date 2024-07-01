@@ -28,14 +28,22 @@ public class AppDAOImpl implements AppDAO {
 
     @Override
     public Instructor findInstructorById(int id) {
-        return entityManager.find(Instructor.class, id);
+        Instructor instructor = entityManager.find(Instructor.class, id);
+        System.out.println("findInstructorById de gelen instructor ");
+        System.out.println(" :" + instructor);
+        return instructor;
+//        return entityManager.find(Instructor.class, id);
     }
 
     @Override
     @Transactional
     public void deleteInstructorById(int id) {
-        Instructor tempInstructor = entityManager.find(Instructor.class, id);
-        entityManager.remove(tempInstructor);
+        Instructor instructor = entityManager.find(Instructor.class, id);
+        System.out.println("Delete de gelen instructor :" + instructor);
+//        for (Course course : instructor.getCourseList()) {
+//         course.setInstructor(null);
+//        }
+//        entityManager.remove(instructor);
         //this will also delete the instructorDetail object Becasude of CascadeType.ALL
     }
 
@@ -93,5 +101,12 @@ public class AppDAOImpl implements AppDAO {
     public Course findCourseById(int id) {
         Course course = entityManager.find(Course.class, id);
         return course;
+    }
+
+    @Override
+    @Transactional
+    public void deleteCourseById(int id) {
+        Course course = entityManager.find(Course.class, id);
+        entityManager.remove(course);
     }
 }
